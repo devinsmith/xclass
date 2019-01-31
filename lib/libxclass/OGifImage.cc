@@ -610,9 +610,9 @@ short OGifImage::get_next_code() {
 // Returns: 0 if successful, else negative. (See ERRS defined)
 
 short OGifImage::decode_LZW(short linewidth) {
-  register unsigned char *sp, *bufptr;
+  unsigned char *sp, *bufptr;
   unsigned char *buf;
-  register short code, fc, oc, bufcnt;
+  short code, fc, oc, bufcnt;
   short c, size, ret;
 
   // Initialize for decoding a new image...

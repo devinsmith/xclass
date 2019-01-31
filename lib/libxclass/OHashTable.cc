@@ -49,7 +49,7 @@ OHashTable::OHashTable() {
 }
 
 OHashTable::~OHashTable() {
-  register OHashEntry *h, *next;
+  OHashEntry *h, *next;
   int i;
 
   // Free up all the entries in the table.
@@ -76,7 +76,7 @@ OHashTable::~OHashTable() {
 // field of the entry, if that is relevant.
 
 void OHashTable::DeleteHashEntry(OHashEntry *entry) {
-  register OHashEntry *prev;
+  OHashEntry *prev;
 
   if (*entry->bucket == entry) {
     *entry->bucket = entry->next;
@@ -97,7 +97,7 @@ void OHashTable::DeleteHashEntry(OHashEntry *entry) {
 
 OHashEntry::~OHashEntry() {
 /* do not delete entries directly from the application!!!
-  register OHashEntry *prev;
+  OHashEntry *prev;
 
   if (*bucket == this) {
     *bucket = next;
@@ -170,7 +170,7 @@ char *OHashTable::HashStats() {
 #define NUM_COUNTERS 10
   int count[NUM_COUNTERS], overflow, i, j;
   double average, tmp;
-  register OHashEntry *h;
+  OHashEntry *h;
   char *result, *p;
 
   // Compute a histogram of bucket usage.
@@ -217,8 +217,8 @@ char *OHashTable::HashStats() {
 // The return value is a one-word summary of the information in string.
 
 unsigned int OStringHashTable::HashString(const char *string) {
-  register unsigned int result;
-  register int c;
+  unsigned int result;
+  int c;
 
   // I tried a zillion different hash functions and asked many other
   // people for advice. Many people had their own favorite functions,
@@ -253,8 +253,8 @@ unsigned int OStringHashTable::HashString(const char *string) {
 // or NULL if there was no matching entry.
 
 OHashEntry *OStringHashTable::Find(const char *key) {
-  register OHashEntry *h;
-  register const char *p1, *p2;
+  OHashEntry *h;
+  const char *p1, *p2;
   int index;
 
   index = HashString(key) & mask;
@@ -285,8 +285,8 @@ OHashEntry *OStringHashTable::Find(const char *key) {
 // stored in the entry will initially be 0.
 
 OHashEntry *OStringHashTable::Create(const char *key, int *inew) {
-  register OHashEntry *h;
-  register const char *p1, *p2;
+  OHashEntry *h;
+  const char *p1, *p2;
   int index;
 
   index = HashString(key) & mask;
@@ -333,7 +333,7 @@ OHashEntry *OStringHashTable::Create(const char *key, int *inew) {
 // or NULL if there was no matching entry.
 
 OHashEntry *OIntHashTable::Find(const char *key) {
-  register OHashEntry *h;
+  OHashEntry *h;
   int index;
 
   index = RANDOM_INDEX(key);
@@ -360,7 +360,7 @@ OHashEntry *OIntHashTable::Find(const char *key) {
 // stored in the entry will initially be 0.
 
 OHashEntry *OIntHashTable::Create(const char *key, int *inew) {
-  register OHashEntry *h;
+  OHashEntry *h;
   int index;
 
   index = RANDOM_INDEX(key);
@@ -404,9 +404,9 @@ OHashEntry *OIntHashTable::Create(const char *key, int *inew) {
 // or NULL if there was no matching entry.
 
 OHashEntry *OArrayHashTable::Find(const char *key) {
-  register OHashEntry *h;
+  OHashEntry *h;
   int *array = (int *) key;
-  register int *iPtr1, *iPtr2;
+  int *iPtr1, *iPtr2;
   int index, count;
 
   for (index = 0, count = keySize, iPtr1 = array;
@@ -441,9 +441,9 @@ OHashEntry *OArrayHashTable::Find(const char *key) {
 // stored in the entry will initially be 0.
 
 OHashEntry *OArrayHashTable::Create(const char *key, int *inew) {
-  register OHashEntry *h;
+  OHashEntry *h;
   int *array = (int *) key;
-  register int *iPtr1, *iPtr2;
+  int *iPtr1, *iPtr2;
   int index, count;
 
   for (index = 0, count = keySize, iPtr1 = array;
@@ -497,8 +497,8 @@ OHashEntry *OArrayHashTable::Create(const char *key, int *inew) {
 void OHashTable::Rebuild() {
   int oldSize, count, index;
   OHashEntry **oldBuckets;
-  register OHashEntry **oldChain, **newChain;
-  register OHashEntry *h;
+  OHashEntry **oldChain, **newChain;
+  OHashEntry *h;
 
   oldSize = numBuckets;
   oldBuckets = buckets;
@@ -542,7 +542,7 @@ int OIntHashTable::GetIndex(OHashEntry *h) {
 }
 
 int OArrayHashTable::GetIndex(OHashEntry *h) {
-  register int *iPtr;
+  int *iPtr;
   int index, count;
 
   for (index = 0, count = keySize, iPtr = ((OArrayHashEntry *)h)->keyWords;

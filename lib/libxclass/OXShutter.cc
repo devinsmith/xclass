@@ -98,7 +98,7 @@ void OXShutter::RemoveItem(int id) {
 
   Layout();
 #else
-  register SListFrameElt *ptr, *prev = NULL;
+  SListFrameElt *ptr, *prev = NULL;
   OXShutterItem *child, *item = NULL;
 
   for (ptr = _flist; ptr != NULL; prev = ptr, ptr = ptr->next) {
@@ -155,7 +155,7 @@ OXShutterItem *OXShutter::Select(int id, int animate) {
 }
 
 OXShutterItem *OXShutter::FindItem(int id) {
-  register SListFrameElt *ptr;
+  SListFrameElt *ptr;
   OXShutterItem *child;
 
   for (ptr = _flist; ptr != NULL; ptr = ptr->next) {
@@ -200,7 +200,7 @@ int OXShutter::HandleTimer(OTimer *t) {
 }
 
 void OXShutter::Layout() {
-  register SListFrameElt *ptr;
+  SListFrameElt *ptr;
   OXShutterItem *child;
   int y, bh, exh;
 
