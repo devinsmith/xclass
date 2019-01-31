@@ -48,13 +48,13 @@ OXToolBar::~OXToolBar() {
   }
 }
 
-void OXToolBar::AddButton(OXButton *b, char *tip_text) {
+void OXToolBar::AddButton(OXButton *b, const char *tip_text) {
   AddFrame(b, new OLayoutHints(LHINTS_TOP | LHINTS_LEFT, _spacing, 0, 0, 0));
   if (tip_text) b->SetTip(tip_text);
   _spacing = 0;
 }
 
-OXButton *OXToolBar::AddButton(const OPicture *pic, char *tip_text,
+OXButton *OXToolBar::AddButton(const OPicture *pic, const char *tip_text,
                                int type, int id) {
   OXPictureButton *button;
 

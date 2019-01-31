@@ -69,8 +69,8 @@ public:
             unsigned int options = CHILD_FRAME);
   virtual ~OXToolBar();
 
-  void AddButton(OXButton *b, char *tip_text = NULL);
-  OXButton *AddButton(const OPicture *pic, char *tip_text, int type, int id);
+  void AddButton(OXButton *b, const char *tip_text = NULL);
+  OXButton *AddButton(const OPicture *pic, const char *tip_text, int type, int id);
   void AddButtons(SToolBarData *data);
   void AddButtons(SToolBarDataEx *data,
                   int show_labels = False, int equal_widths = False);
