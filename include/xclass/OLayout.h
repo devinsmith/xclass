@@ -104,6 +104,7 @@ protected:
 
 class OLayoutManager : public OBaseObject {
 public:
+  virtual ~OLayoutManager() { }
   virtual void Layout() = 0;
   virtual ODimension GetDefaultSize() const = 0;
 };
