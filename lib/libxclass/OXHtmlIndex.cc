@@ -242,7 +242,10 @@ int OXHtml::IndexMod(OHtmlElement **pp, int *ip, char *cp) {
   while (*cp && x < 2) {
     cnt = 0;
     i = 1;
-    while (i < 45 && isdigit(cp[i])) nbuf[i-1] = cp[i++];
+    while (i < 45 && isdigit(cp[i])) {
+      nbuf[i-1] = cp[i];
+      i++;
+    }
     if (i > 1) {
       nbuf[i-1] = 0;
       cnt = atoi(nbuf);
