@@ -94,7 +94,7 @@ void OXVSlider::_DoRedraw() {
     for (int i = 0; i <= lines; i++) {
       int y = i * _scale + (i * remain) / lines;
       DrawLine(_blackGC, _w/2+8, y+7, _w/2+10, y+7);
-      if ((_type & SLIDER_2) && (_type && SCALE_BOTH))
+      if ((_type & SLIDER_2) && (_type & SCALE_BOTH))
 	DrawLine(_blackGC, _w/2-9, y+7, _w/2-11, y+7);
     }
   }
@@ -202,7 +202,7 @@ void OXHSlider::_DoRedraw() {
     for (int i = 0; i <= lines; i++) {
       int x = i * _scale + (i * remain) / lines;
       DrawLine(_blackGC, x+7, _h/2+8, x+7, _h/2+10);
-      if ((_type & SLIDER_2) && (_type && SCALE_BOTH))
+      if ((_type & SLIDER_2) && (_type & SCALE_BOTH))
 	DrawLine(_blackGC, x+7, _h/2-9, x+7, _h/2-11);
     }
   }
