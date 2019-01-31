@@ -68,7 +68,7 @@ public:
 
 //-----------------------------------------------------------------
 
-main() {
+int main() {
   OXClient *clientX = new OXClient;
 
   OXMain *mainWindow = new OXMain(clientX->GetRoot(), 140, 600);

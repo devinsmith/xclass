@@ -92,7 +92,7 @@ protected:
 
 //----------------------------------------------------------------------
 
-main() {
+int main() {
 
   OXClient *clientX = new OXClient;
 

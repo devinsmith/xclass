@@ -24,7 +24,7 @@
 #include <xclass/OString.h>
 #include <xclass/OXComboBox.h>
 
-main() {
+int main() {
 
   OXClient *ClientX = new OXClient();
 

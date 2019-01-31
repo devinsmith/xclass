@@ -123,7 +123,7 @@ struct _sdata misc_data[] = {
 
 //-----------------------------------------------------------------
 
-main() {
+int main() {
   OXClient *clientX = new OXClient;
 
   OXMain *mainWindow = new OXMain(clientX->GetRoot(), MAIN_WIDTH, MAIN_HEIGHT);

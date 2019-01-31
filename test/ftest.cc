@@ -92,7 +92,7 @@ OMimeTypes *MimeTypeList;  // currently we need this for OXFileDialog
 const char *filetypes[] = { "All files",      "*",
                       NULL,             NULL };
 
-main() {
+int main() {
   char mimerc[PATH_MAX];
 
   clientX = new OXClient;

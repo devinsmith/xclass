@@ -94,7 +94,7 @@ int OXMain::ProcessMessage(OMessage *msg) {
 
 //-----------------------------------------------------------------------
 
-main() {
+int main() {
   OXClient *clientX = new OXClient("");
 
   OXMain *mainWindow = new OXMain(clientX->GetRoot(), 200, 200);

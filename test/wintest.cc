@@ -168,7 +168,7 @@ int mb_button_id[10] = { ID_YES, ID_YESALL, ID_NO, ID_OK, ID_APPLY,
 int mb_icon[4] = { MB_ICONSTOP, MB_ICONQUESTION,
                    MB_ICONEXCLAMATION, MB_ICONASTERISK };
 
-main() {
+int main() {
 
   MatchXclassVersion(XCLASS_VERSION, XCLASS_RELEASE_DATE);
 

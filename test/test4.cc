@@ -24,7 +24,7 @@
 #include <xclass/OXClient.h>
 #include <xclass/OXMainFrame.h>
 
-main() {
+int main() {
   OXClient *clientX = new OXClient();
 
   OXMainFrame *main1 = new OXMainFrame(clientX->GetRoot(), 100, 100);

@@ -164,7 +164,7 @@ protected:
 
 //---------------------------------------------------------------------
 
-main(int argc, char *argv[]) {
+int main(int argc, char *argv[]) {
   OXClient *clientX = new OXClient(argc, argv);
 
   OXMain *mainWindow = new OXMain(clientX->GetRoot(), 400, 200);

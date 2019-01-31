@@ -24,7 +24,7 @@
 #include <xclass/OXLabel.h>
 #include <xclass/OXSpinner.h>
 
-main() {
+int main() {
 
   OXClient *ClientX = new OXClient();
   OXMainFrame *man = new OXMainFrame(ClientX->GetRoot(), 100, 150);
