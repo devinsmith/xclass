@@ -12,7 +12,7 @@ x_libraries= -lGLU -lGL -lXpm -lXext -lX11
 
 lib_name=xclass
 
-CXX=g++
+CXX?=g++
 INCLUDES=-I${top_srcdir}/include ${x_includes}
 DEFINES=-DOX_DEFAULT_POOL=\"/usr/local/xclass-icons\" \
 	-DOX_DEFAULT_ROOT=\"/usr/local/xclass\"

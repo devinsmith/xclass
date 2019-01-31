@@ -10,7 +10,7 @@ exec_prefix=${prefix}
 x_includes=
 x_libraries= -lGLU -lGL -lXpm -lXext -lX11
 
-CXX=g++
+CXX?=g++
 INCLUDES=-I${top_srcdir}/include ${x_includes}
 CXXFLAGS=${INCLUDES}  -g
 LIBS=-L${top_srcdir}/lib/libxclass -lxclass ${x_libraries}
