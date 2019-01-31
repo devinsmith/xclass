@@ -259,7 +259,7 @@ void OXMain::SetWindowTitle(char *title) {
     char *wname = new char[strlen(title) + strlen(pname) + 4];
     sprintf(wname, "%s - %s", pname, title);
     SetWindowName(wname);
-    delete wname;
+    delete [] wname;
   } else {
     SetWindowName(pname);
   }
@@ -390,8 +390,8 @@ void OXMain::DoAbout() {
 
   info.wname = "About Test Application";
   info.title = "Test Application\n"
-               "Compiled with xclass version "XCLASS_VERSION;
-  info.copyright = "Copyright © 1998-2000 by the fOX Project Team.";
+               "Compiled with xclass version " XCLASS_VERSION;
+  info.copyright = "Copyright \xA9 1998-2000 by the fOX Project Team.";
   info.text = "This program is free software; you can redistribute it "
               "and/or modify it under the terms of the GNU "
               "General Public License.\n\n"
