@@ -13,7 +13,7 @@ LGPL 2.1
 # Requirements
 Debian based systems require the following libraries:
 ```
-sudo apt-get install libx11-dev
+sudo apt-get install libx11-dev libxpm-dev libgl-dev libglu1-mesa-dev
 ```
 
 # Building
