@@ -240,7 +240,11 @@ protected:
   // Fields that represent Unix's implementation of a font
 
   Display *display;             // The display to which font belongs.
+#ifdef HAVE_XFT_H
+  XftFont *fontStruct;
+#else // XLFD
   XFontStruct *fontStruct;      // X information about font.
+#endif
   char types[256];              // Array giving types of all characters in
                                 // the font, used when displaying control
                                 // characters. See OXFont.cc for definition.
@@ -345,8 +349,13 @@ protected:
   int FieldSpecified(const char *field);
   OXFont *GetNativeFont(const char *name);
   OXFont *GetFontFromAttributes(OFontAttributes *fa, OXFont *fontPtr);
+#ifdef HAVE_XFT_H
+  OXFont *MakeFont(OXFont *font, XftFont *fontStruct,
+                   const char *fontName);
+#else
   OXFont *MakeFont(OXFont *font, XFontStruct *fontStruct,
                    const char *fontName);
+#endif
 
   OStringHashTable fontCache;	// Map a string to an existing OXFont.
 				// Keys are CachedFontKey structs, values

@@ -1825,10 +1825,14 @@ OLayoutChunk *OXFont::NewChunk(OTextLayout *layout, int *maxPtr,
 // when the font is no longer needed.
 
 OXFont *OFontPool::GetNativeFont(const char *name) {
+#ifdef HAVE_XFT_H
+  XftFont *fontStruct;
+#else
   XFontStruct *fontStruct;
 
   fontStruct = XLoadQueryFont(_client->GetDisplay(), name);
   if (fontStruct == NULL) return NULL;
+#endif
 
   return MakeFont(NULL, fontStruct, name);
 }
@@ -2321,6 +2325,20 @@ void OXFont::DrawChars(Display *dpy, Drawable dst, GC gc,
 // fontName   -- The string passed to XLoadQueryFont() to construct the
 //               fontStruct.
 
+#ifdef HAVE_XFT_H
+OXFont *OFontPool::MakeFont(OXFont *font, XftFont *fontStruct,
+                            const char *fontName) {
+  OXFont *newFont;
+  if (font != NULL) {
+    XftFontClose(_client->GetDisplay(), font->fontStruct);
+    newFont = font;
+  } else {
+    newFont = new OXFont();
+  }
+  return newFont;
+}
+#else
+
 OXFont *OFontPool::MakeFont(OXFont *font, XFontStruct *fontStruct,
                             const char *fontName) {
   OXFont *newFont;
@@ -2476,6 +2494,7 @@ OXFont *OFontPool::MakeFont(OXFont *font, XFontStruct *fontStruct,
   }
   return newFont;
 }
+#endif
 
 
 //--------------------------------------------------------------------------
