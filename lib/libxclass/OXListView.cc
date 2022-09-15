@@ -1151,6 +1151,27 @@ int OXListView::DrawRegion(OPosition coord, ODimension size, int clear) {
   return True;
 }
 
+#if __cplusplus > 201103L
+bool SLVSortAscending(const OItem* item1, const OItem* item2) {
+  OListViewItem *i1 = (OListViewItem *) item1;
+  OListViewItem *i2 = (OListViewItem *) item2;
+
+  int column = ((OXListView *)i1->GetParent())->GetSortColumn();
+
+  return (i1->Compare(i2, column) < 0);
+}
+
+bool SLVSortDescending(const OItem* item1, const OItem* item2) {
+  OListViewItem *i1 = (OListViewItem *) item1;
+  OListViewItem *i2 = (OListViewItem *) item2;
+
+  int column = ((OXListView *)i1->GetParent())->GetSortColumn();
+
+  return (i2->Compare(i1, column) < 0);
+}
+
+#else // C++98
+
 struct SLVSortAscending : public std::binary_function<OItem*, OItem*, bool> {
 public:
   bool operator()(const OItem* item1, const OItem* item2) const {
@@ -1174,6 +1195,7 @@ public:
     return (i2->Compare(i1, column) < 0);
   }
 };
+#endif // C++98
 
 void OXListView::SortColumn(int column, int mode) {
   if (column >= _columnData.size()) return;
@@ -1183,10 +1205,17 @@ void OXListView::SortColumn(int column, int mode) {
 
   _sortColumn = column;
 
+#if __cplusplus > 201103L
+  if (mode == LV_ASCENDING)
+    std::stable_sort(_items.begin(), _items.end(), SLVSortAscending);
+  else
+    std::stable_sort(_items.begin(), _items.end(), SLVSortDescending);
+#else
   if (mode == LV_ASCENDING)
     std::stable_sort(_items.begin(), _items.end(), SLVSortAscending());
   else
     std::stable_sort(_items.begin(), _items.end(), SLVSortDescending());
+#endif
 
   ItemLayout();
 
