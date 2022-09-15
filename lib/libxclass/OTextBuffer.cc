@@ -45,8 +45,6 @@ void OTextBuffer::AddText(int pos, const char *text, int length) {
   if (pos < 0) pos = 0;
   if (pos > slen) pos = slen;
 
-  printf("%d %d %d\n", pos, slen, length);
-
   tlen = length; //strlen(text);
   //n = slen - pos + 2;  // amount of chars to move, including trailing zero
   n = slen - pos + 1;  // amount of chars to move, including trailing zero
