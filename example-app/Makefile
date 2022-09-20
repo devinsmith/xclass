@@ -16,6 +16,7 @@ CXXFLAGS=${INCLUDES}  -g
 LIBS=-L${top_srcdir}/lib/libxclass -lxclass ${x_libraries}
 EXTRALIBS=-lXpm -lXext -lX11
 LDFLAGS=
+RM=rm -f
 MAKEDEPEND=@MAKEDEPEND@
 
 SRCS = main.cc
